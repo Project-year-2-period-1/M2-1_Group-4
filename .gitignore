@@ -21,3 +21,11 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Docs
+*.md
+!README.md
+
+#editor
+.vscode/
+.idea/
