@@ -81,6 +81,26 @@
 
 		camera.position.z = 3
 
+		function update_perspective(x: number, y: number, z:number) {
+			// TODO: remove this temporary stuff
+			let screen_width = 3
+			let screen_height = 2
+
+			camera.rotation.set(0, 0, 0);
+
+			const scale = camera.near / Math.max(camera.near, z)
+
+			// calculating frustum bounds for the screen plane (scaled to the near plane)
+			const left   = (-screen_width  / 2 - x) * scale
+			const right  = ( screen_width  / 2 - x) * scale
+			const top    = ( screen_height / 2 - y) * scale
+			const bottom = (-screen_height / 2 - y) * scale
+
+			// apply the projection matrix
+			camera.projectionMatrix.makePerspective(left, right, top, bottom, camera.near, camera.far)
+		    camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();  // TODO: is this needed?
+		}
+
 		const animate = () => {
 			if (!renderer || !canvas) {
 				return;
@@ -91,8 +111,9 @@
 				camera.position.y = -(mouse_pos.y - canvas.clientHeight / 2) / 50;
 			} else if (mode == 'zw') {
 				camera.position.z = (mouse_pos.x - canvas.clientWidth / 2) / 50;
-				// camera.rotation.x = -(mouse_pos.y - canvas.clientHeight / 2) / 50;
 			}
+
+			update_perspective(camera.position.x, camera.position.y, camera.position.z)
 
 			animId = requestAnimationFrame(animate)
 			// mesh.rotation.x += 0.005
