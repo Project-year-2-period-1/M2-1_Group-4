@@ -43,7 +43,7 @@
 			const loader = new GLTFLoader();
 
 			loader.load(
-				'src/lib/assets/Gallery.glb',
+				'src/lib/assets/Gallery.glb',  // TODO: i dont know if this path will work in production
 				(gltf) => {
 					// This callback runs when the model is successfully loaded
 					const model = gltf.scene;
