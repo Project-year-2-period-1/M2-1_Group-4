@@ -183,7 +183,7 @@
 				camera.position.z = 4 + (mouse_pos.x - canvas.clientWidth / 2) / 200;
 			}
 
-			// update_perspective(camera.position.x, camera.position.y, camera.position.z)
+			update_perspective(camera.position.x, camera.position.y, camera.position.z)
 
 			animId = requestAnimationFrame(animate)
 			// mesh.rotation.x += 0.005
