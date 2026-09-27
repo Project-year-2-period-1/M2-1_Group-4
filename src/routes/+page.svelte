@@ -58,33 +58,6 @@
 			)
 		}
 
-		// {
-		// 	const planeGeo = new THREE.PlaneGeometry(40, 40);
-		// 	const planeMat = new THREE.MeshPhongMaterial({
-		// 		color: 0xc4c4c4,
-		// 		side: THREE.DoubleSide,
-		// 	});
-		// 	const plane_mesh = new THREE.Mesh(planeGeo, planeMat);
-		// 	plane_mesh.rotation.x = Math.PI * -.5;
-		// 	plane_mesh.position.y = -1.25;
-		// 	scene.add(plane_mesh);
-		// }
-
-		{
-		// 	const cubeGeo = new THREE.BoxGeometry(1, 1, 1);
-		// 	const cubeMat = new THREE.MeshPhongMaterial({color: '#8AC'});
-		// 	const mesh = new THREE.Mesh(cubeGeo, cubeMat);
-		// 	mesh.position.set(0, 2, 0);
-		// 	scene.add(mesh);
-		}
-
-		{
-			// const color = 0xFFFFFF;
-			// const intensity = 1;
-			// const light = new THREE.AmbientLight(color, intensity);
-			// scene.add(light);
-		}
-
 		{
 			const color = 0xFFFFFF;
 			const intensity = 1;
@@ -95,29 +68,7 @@
 			scene.add(light.target);
 		}
 
-		// overhead lights
-		// const num_lights = 5  // number of lights
-		// const range = 3       // horizontal space that the lights are spread across
-		// for (let i=0; i<num_lights; i++) {
-
-		// 	const x = (0.5 - (i / (num_lights - 1))) * range
-
-		// 	const intensity = 5;
-		// 	const width = 0.1;
-		// 	const height = 10;
-
-		// 	const rect_light = new THREE.RectAreaLight(0xffffff, intensity, width, height);
-
-		// 	rect_light.position.set(x, 5, 0);
-		// 	rect_light.lookAt(x, 0, 0);
-
-		// 	scene.add(rect_light)
-
-		// 	const rectLightHelper = new RectAreaLightHelper(rect_light);
-		// 	scene.add(rectLightHelper);
-		// }
-
-		// behind light
+		// light
 		{
 			const intensity = 2;
 			const width = 10;
@@ -133,17 +84,6 @@
 			const rectLightHelper = new RectAreaLightHelper(rect_light);
 			scene.add(rectLightHelper);
 		}
-
-
-		// {
-		// 	const icoGeo = new THREE.IcosahedronGeometry(1, 0);
-		// 	const icoMat = new THREE.MeshPhongMaterial({color: '#8AC'});
-		// 	const mesh = new THREE.Mesh(
-		// 		icoGeo,
-		// 		icoMat
-		// 	)
-		// 	scene.add(mesh)
-		// }
 
 		camera.position.z = 3
 
@@ -186,8 +126,6 @@
 			update_perspective(camera.position.x, camera.position.y, camera.position.z)
 
 			animId = requestAnimationFrame(animate)
-			// mesh.rotation.x += 0.005
-			// mesh.rotation.y += 0.01
 			renderer.render(scene, camera)
 		}
 		animate()
