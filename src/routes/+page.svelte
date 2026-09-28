@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte'
+	import Stats from 'stats.js';
 	import * as THREE from 'three'
 	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 	import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js';
@@ -31,6 +32,16 @@
 		if (!canvas) {
 			return;
 		}
+
+		// initialize Stats.js stuff (for the fps counter)
+		const stats = new Stats();
+		stats.showPanel(0); // 0: fps, 1: ms, 2: mb
+
+		stats.dom.style.position = 'absolute';
+		stats.dom.style.top = '0px';
+		stats.dom.style.left = '0px';
+		document.body.appendChild(stats.dom);
+
 
 		// initializing scene and camera
 		const scene = new THREE.Scene()
@@ -121,10 +132,13 @@
 		}
 
 		const animate = () => {
+			stats.begin()  // start tracking frame time
+
 			// return early if the renderer or canvas don't exist
 			if (!renderer || !canvas) {
 				return;
 			}
+
 
 			// TODO: animate using actual user position, rather than mouse
 			// move camera
@@ -137,6 +151,8 @@
 
 			// correct for viewer perspective
 			update_perspective(camera.position.x, camera.position.y, camera.position.z)
+
+			stats.end()  // stop tracking frame time
 
 			animId = requestAnimationFrame(animate)  // request the next frame
 			renderer.render(scene, camera)  // render the current frame
