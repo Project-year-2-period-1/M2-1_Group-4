@@ -16,3 +16,7 @@ We can have the user do the following, maybe
 
 1. click a point on their screen that is close to the camera
 2. give some approximate x/y/z offsets from that clicked point to the position of the camera
+
+## Facial tracking test
+
+MediaPipe vs OpenCV comparison, results and how to take part: see [`facialID-test/`](facialID-test/README.md).

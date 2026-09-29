@@ -29,3 +29,13 @@ vite.config.ts.timestamp-*
 #editor
 .vscode/
 .idea/
+*.json
+# Facial tracking test: docs are tracked; assets are built/downloaded by its scripts
+!facialID-test/*.md
+!facialID-test/results/*.json
+/facialID-test/.opencv-build
+/static/opencv
+/static/mediapipe
+/static/bench-fixtures
+/facialID-test/test-results
+/facialID-test/playwright-report
