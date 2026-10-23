@@ -72,6 +72,24 @@ agree:
   say to move rather than lean. That only helps new sessions: these result files were computed
   before the fix and cannot be re-analysed without the recordings.
 
+### Conclusions
+
+1. **Use MediaPipe, not OpenCV.** OpenCV is three times slower on the laptop, unusable on the
+   phone (8 fps), and loses the face or jumps 10-15 cm when you lean in or move sideways.
+2. **Use MediaPipe's facial transformation matrix** for head position. Don't take distance from
+   iris size or eye spacing.
+3. **OpenCV as an add-on to MediaPipe**, the three uses considered before testing:
+
+   | Add-on                                                               | Status         | Why                                                                                                                                                                                                      |
+   | -------------------------------------------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Camera calibration (`calibrateCamera`) for the real focal length     | **Not needed** | The two-position calibration (C and R) already gives the focal length without OpenCV. The distance errors seen came from the setup, not a missing focal length (absolute accuracy is still unvalidated). |
+   | `solvePnP` for head pose                                             | **Not needed** | MediaPipe's transformation matrix already is a head pose, and it was the best option on laptop and phone: least jitter, least fooled by head turns.                                                      |
+   | Image preprocessing (contrast equalisation) for dim or backlit rooms | **Still open** | Every session so far was in normal lighting.                                                                                                                                                             |
+
+4. **Next test:** one MediaPipe session in dim light, and ideally one backlit (window or lamp
+   behind you). If MediaPipe still finds the face at least 95% of the time (the existing gate),
+   OpenCV can be dropped entirely.
+
 ## Processing sent-in data (Omer)
 
 Participants send a Result JSON, a Recording and a Sidecar. On `/bench`, choose Source "Replay a
