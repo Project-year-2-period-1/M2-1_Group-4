@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte'
 	import Stats from 'stats.js';
-	import * as THREE from 'three'
+	import * as THREE from 'three/webgpu'
 	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 	import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js';
 
@@ -11,7 +11,7 @@
 	};
 
 	let canvas: HTMLCanvasElement | null;
-	let renderer: THREE.WebGLRenderer | null;
+	let renderer: THREE.WebGPURenderer | null;
 	let animId: number | null;
 
 	let mouse_pos: MousePos = $state({x: 0, y: 0})
@@ -27,7 +27,7 @@
 	}
 
 	// TODO: add fps counter for testing and comparing
-	onMount(() => {
+	onMount(async () => {
 		// return early if canvas doesn't exist (not actually necessary, just to make TypeScript happy)
 		if (!canvas) {
 			return;
@@ -46,21 +46,23 @@
 		// initializing scene and camera
 		const scene = new THREE.Scene()
 		const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000)
-		renderer = new THREE.WebGLRenderer({ canvas })
+		renderer = new THREE.WebGPURenderer({ canvas })
 		renderer.setSize(canvas.clientWidth, canvas.clientHeight)  // TODO: update size when fullscreened, or require fullscreen from the start, or something
+
+		await renderer.init();
 
 		// loading scene
 		{
 			const loader = new GLTFLoader();
 
 			loader.load(
-				'src/lib/assets/Gallery.glb',  // TODO: i dont know if this path will work in production
+				'src/lib/assets/Windmill.glb',  // TODO: i dont know if this path will work in production
 				(gltf) => {
 					// This callback runs when the model is successfully loaded
 					const model = gltf.scene;
 
 					model.rotation.y = -Math.PI / 2;  // fix model rotation
-					model.position.set(0, -1, 1)      // fix model position
+					model.position.set(0, -1, -25)      // fix model position
 
 					scene.add(model);
 				},
@@ -75,6 +77,11 @@
 			)
 		}
 
+		// scene background (sky and such)
+		{
+			scene.background = new THREE.Color(0xb0cdff);
+		}
+
 		// directional light
 		{
 			const color = 0xFFFFFF;
@@ -86,22 +93,22 @@
 			scene.add(light.target);
 		}
 
-		// back light plane
-		{
-			const intensity = 2;
-			const width = 10;
-			const height = 10;
-
-			const rect_light = new THREE.RectAreaLight(0xffffff, intensity, width, height);
-
-			rect_light.position.set(0, 0, 5);
-			rect_light.lookAt(0, 0, 0);
-
-			scene.add(rect_light)
-
-			const rectLightHelper = new RectAreaLightHelper(rect_light);  // this just makes the light itsself visible as a bright rectangle
-			scene.add(rectLightHelper);
-		}
+// 		// back light plane
+// 		{
+// 			const intensity = 2;
+// 			const width = 10;
+// 			const height = 10;
+//
+// 			const rect_light = new THREE.RectAreaLight(0xffffff, intensity, width, height);
+//
+// 			rect_light.position.set(0, 0, 5);
+// 			rect_light.lookAt(0, 0, 0);
+//
+// 			scene.add(rect_light)
+//
+// 			const rectLightHelper = new RectAreaLightHelper(rect_light);  // this just makes the light itsself visible as a bright rectangle
+// 			scene.add(rectLightHelper);
+// 		}
 
 		// TODO: set this using actual user position, rather than hard-coded test value
 		// set base camera position
@@ -134,10 +141,15 @@
 		const animate = () => {
 			stats.begin()  // start tracking frame time
 
+			console.log("hihi")
+
 			// return early if the renderer or canvas don't exist
 			if (!renderer || !canvas) {
 				return;
 			}
+
+			console.log("hihi 2")
+
 
 
 			// TODO: animate using actual user position, rather than mouse
@@ -154,19 +166,19 @@
 
 			stats.end()  // stop tracking frame time
 
-			animId = requestAnimationFrame(animate)  // request the next frame
 			renderer.render(scene, camera)  // render the current frame
+
+			console.log("hihi 3")
 		}
 
-		animate()  // start the animation loop
+		// start animation loop
+		renderer.setAnimationLoop(animate);
 	})
 
 	// cleanup
 	onDestroy(() => {
 		// cancel the animation
-		if (animId) {
-			cancelAnimationFrame(animId);
-		}
+		renderer?.setAnimationLoop(null);
 
 		// destroy the renderer
 		renderer?.dispose();
