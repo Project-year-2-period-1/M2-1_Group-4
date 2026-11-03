@@ -1,0 +1,1826 @@
+{
+	"tracker": "opencv",
+	"landmarkSet": "ibug68",
+	"meta": {
+		"participant": "Omer",
+		"lighting": "normal",
+		"glasses": false,
+		"machine": "Laptop",
+		"notes": "",
+		"marks": {
+			"z0": 600,
+			"dx": 150,
+			"zNear": 500,
+			"zFar": 700
+		},
+		"recordedAt": "2026-09-29T12:38:12.641Z"
+	},
+	"source": "live",
+	"droppedFrames": 319,
+	"stats": {
+		"frames": 3140,
+		"detectionRate": 0.9119221411192214,
+		"detectionRateNormal": 0.9449275362318841,
+		"occlusionDetectionRate": 1,
+		"recoveryMs": 0,
+		"procP50": 25.899999999906868,
+		"procP95": 27.5,
+		"captureToResultP50": 32.499999999883585,
+		"fps": 27.0644744930908
+	},
+	"combos": [
+		{
+			"combo": "noseTip/ipd",
+			"calibration": {
+				"f": 550.353759765625,
+				"principal": {
+					"x": 640.051025390625,
+					"y": 343.244140625
+				},
+				"realSize": 76.14761216539372
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 41.87631592823092,
+					"jitterFiltered": 39.427944488292994,
+					"error": 5.756650011744831,
+					"errorX": 5.033327786174081,
+					"errorZ": 2.7936769238137913
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 40.02416798819007,
+					"jitterFiltered": 37.03221168081773,
+					"error": 29.785404075374764,
+					"errorX": -1.223655631470649,
+					"errorZ": -29.760258110925747
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 146.52219851875606,
+					"jitterFiltered": 145.60010251041822,
+					"error": 163.15546177611895,
+					"errorX": 152.51092475105875,
+					"errorZ": -57.966563974031715
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 101.48278969134441,
+					"jitterFiltered": 102.46047361555887,
+					"error": 103.38106847601674,
+					"errorX": -39.914473528892024,
+					"errorZ": -95.36498373173583
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 7.58009392316696,
+					"jitterFiltered": 3.8855513473215217,
+					"error": 46.114777857465285,
+					"errorX": -11.891100151247956,
+					"errorZ": -44.55529681234725
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 5.983900581058875,
+					"jitterFiltered": 4.581588960285875,
+					"error": 97.01947046768824,
+					"errorX": -2.7472281432478507,
+					"errorZ": -96.98056706041461
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 13.945614837340251,
+					"jitterFiltered": 11.985627563858433,
+					"error": 88.13357933027144,
+					"errorX": 3.5405341044271093,
+					"errorZ": -88.06243480520305
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 41.97028228687503,
+					"jitterFiltered": 38.68807734155477,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 25.14455478932743,
+					"jitterFiltered": 24.097273052061187,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 99.35212532996373,
+					"jitterFiltered": 96.5652679107247,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.736836617160654,
+					"jitterFiltered": 8.040238481341191,
+					"error": 55.88335616282373,
+					"errorX": 17.827846880837395,
+					"errorZ": -52.96335876447438
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 11.639555917156219,
+					"jitterFiltered": 11.639555917156219,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 42.871121977745034,
+					"jitterFiltered": 38.90207382276427,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 40.9502419582105,
+			"staticJitterFiltered": 38.23007808455536,
+			"accuracyMm": 102.4176946443223,
+			"expressionDriftMm": 11.985627563858433,
+			"rotationCouplingMm": 31.39267519680798,
+			"filterLagMs": 10
+		},
+		{
+			"combo": "noseTip/outerCanthi",
+			"calibration": {
+				"f": 550.353759765625,
+				"principal": {
+					"x": 640.051025390625,
+					"y": 343.244140625
+				},
+				"realSize": 106.68598922495556
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 42.72589800914891,
+					"jitterFiltered": 40.23900117850706,
+					"error": 5.7939996754157574,
+					"errorX": 5.03275651098954,
+					"errorZ": 2.870852510981763
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 38.92877212008462,
+					"jitterFiltered": 35.94919323027975,
+					"error": 30.465866261836076,
+					"errorX": -1.480512476133896,
+					"errorZ": -30.4298716706478
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 146.23597542141982,
+					"jitterFiltered": 145.301185700666,
+					"error": 162.3909794231788,
+					"errorX": 152.0868610708098,
+					"errorZ": -56.92465974994923
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 102.26184180395023,
+					"jitterFiltered": 103.15551808526273,
+					"error": 102.69944358110835,
+					"errorX": -40.070314134572016,
+					"errorZ": -94.55974638833362
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 7.312341206527218,
+					"jitterFiltered": 3.8511400596977823,
+					"error": 46.18088163616299,
+					"errorX": -11.889001969293211,
+					"errorZ": -44.624269863690074
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 6.076026684642714,
+					"jitterFiltered": 4.6491433396174555,
+					"error": 97.2068655292753,
+					"errorX": -2.746350500020006,
+					"errorZ": -97.168061959461
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 13.685775576926517,
+					"jitterFiltered": 11.888941499135854,
+					"error": 88.15860992700598,
+					"errorX": 3.5380971094544513,
+					"errorZ": -88.08758353539997
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 41.61182987771835,
+					"jitterFiltered": 38.3448178021823,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 25.254218963023696,
+					"jitterFiltered": 24.18806869696692,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 99.66345085909208,
+					"jitterFiltered": 96.85380807450535,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.7107522422371,
+					"jitterFiltered": 8.032055292307986,
+					"error": 52.068105201273575,
+					"errorX": 17.96022021072058,
+					"errorZ": -48.872467394570094
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 9.576029555750367,
+					"jitterFiltered": 9.576029555750367,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 42.501026689438845,
+					"jitterFiltered": 38.47787772770217,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 40.82733506461676,
+			"staticJitterFiltered": 38.09409720439341,
+			"accuracyMm": 102.11954254243138,
+			"expressionDriftMm": 11.888941499135854,
+			"rotationCouplingMm": 31.266443249574607,
+			"filterLagMs": 10
+		},
+		{
+			"combo": "noseTip/faceWidth",
+			"calibration": {
+				"f": 550.353759765625,
+				"principal": {
+					"x": 640.051025390625,
+					"y": 343.244140625
+				},
+				"realSize": 170.57240959009667
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 40.12726320613448,
+					"jitterFiltered": 37.61908429309485,
+					"error": 5.052257839250163,
+					"errorX": 5.021271127070345,
+					"errorZ": 0.5586998681890236
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 33.067834112538584,
+					"jitterFiltered": 29.989168176852438,
+					"error": 34.279405782829315,
+					"errorX": -3.094354153048755,
+					"errorZ": -34.13945859558089
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 143.6547735245907,
+					"jitterFiltered": 142.5535471356383,
+					"error": 163.1289291757973,
+					"errorX": 151.39528691291332,
+					"errorZ": -60.74960604480452
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 97.1048471732817,
+					"jitterFiltered": 97.76961535696094,
+					"error": 93.74923187052707,
+					"errorX": -39.856241334969084,
+					"errorZ": -84.85516191112094
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 6.192501496762692,
+					"jitterFiltered": 2.615852562694678,
+					"error": 49.7959089954305,
+					"errorX": -11.819985081150813,
+					"errorZ": -48.37272480812476
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 4.962430419749426,
+					"jitterFiltered": 2.552801481730207,
+					"error": 91.85171736449263,
+					"errorX": -2.7750516311093616,
+					"errorZ": -91.80978744802383
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 9.422936789132143,
+					"jitterFiltered": 7.791890827541184,
+					"error": 85.24097884404246,
+					"errorX": 3.535653702483231,
+					"errorZ": -85.16762076744078
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 42.11679987890976,
+					"jitterFiltered": 38.66158081681359,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 25.8549225679547,
+					"jitterFiltered": 24.719125310038525,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 99.28432273902527,
+					"jitterFiltered": 96.37813068334515,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.37952180377524,
+					"jitterFiltered": 7.504878228433188,
+					"error": 55.069745490932036,
+					"errorX": 17.853217492993917,
+					"errorZ": -52.095484387650004
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 5.617557018533173,
+					"jitterFiltered": 5.617557018533173,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 39.24340597074846,
+					"jitterFiltered": 35.03199003676116,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 36.59754865933653,
+			"staticJitterFiltered": 33.804126234973644,
+			"accuracyMm": 99.63144685156189,
+			"expressionDriftMm": 7.791890827541184,
+			"rotationCouplingMm": 31.69035306342606,
+			"filterLagMs": 15
+		},
+		{
+			"combo": "canthiMid/ipd",
+			"calibration": {
+				"f": 536.422119140625,
+				"principal": {
+					"x": 642.9876556396484,
+					"y": 299.9378967285156
+				},
+				"realSize": 78.12527328205255
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 44.442336260621985,
+					"jitterFiltered": 42.128294602601926,
+					"error": 5.247951777813815,
+					"errorX": 4.442563123649397,
+					"errorZ": 2.7936769238137913
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 40.08408400547069,
+					"jitterFiltered": 37.073114755217446,
+					"error": 29.771745160318737,
+					"errorX": -0.8269504592338421,
+					"errorZ": -29.760258110925975
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 145.90218449442182,
+					"jitterFiltered": 144.88547491085055,
+					"error": 165.65345882957763,
+					"errorX": 155.1803656499335,
+					"errorZ": -57.966563974031715
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 100.31212337289442,
+					"jitterFiltered": 101.19767204690024,
+					"error": 102.38661720283628,
+					"errorX": -37.26310856713231,
+					"errorZ": -95.36498373173583
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 7.473923832516091,
+					"jitterFiltered": 3.7842908444387096,
+					"error": 46.61059866863082,
+					"errorX": -13.688441628315386,
+					"errorZ": -44.555296812347365
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 5.906794368374495,
+					"jitterFiltered": 4.552411051974485,
+					"error": 97.02853948506055,
+					"errorX": -3.0507519145889326,
+					"errorZ": -96.98056706041467
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 13.585739044450722,
+					"jitterFiltered": 11.577685886634939,
+					"error": 88.21898274126916,
+					"errorX": 5.253236343787292,
+					"errorZ": -88.06243480520317
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 36.793790654672584,
+					"jitterFiltered": 33.045450327242605,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 18.400339201609274,
+					"jitterFiltered": 17.18173005239528,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 100.67811384128834,
+					"jitterFiltered": 97.79941232653294,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.528564126030746,
+					"jitterFiltered": 7.789479613582003,
+					"error": 56.24222280056522,
+					"errorX": 18.922744355245353,
+					"errorZ": -52.963358764474606
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 11.598660508825335,
+					"jitterFiltered": 11.598660508825335,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 43.800257400237626,
+					"jitterFiltered": 39.574894155438386,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 42.26321013304634,
+			"staticJitterFiltered": 39.600704678909686,
+			"accuracyMm": 102.91980354652632,
+			"expressionDriftMm": 11.577685886634939,
+			"rotationCouplingMm": 25.113590189818943,
+			"filterLagMs": 10
+		},
+		{
+			"combo": "canthiMid/outerCanthi",
+			"calibration": {
+				"f": 536.422119140625,
+				"principal": {
+					"x": 642.9876556396484,
+					"y": 299.9378967285156
+				},
+				"realSize": 109.45677515747052
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 45.333548566793276,
+					"jitterFiltered": 42.98066073613212,
+					"error": 5.2875154909771025,
+					"errorX": 4.4402731816311185,
+					"errorZ": 2.870852510981763
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 38.99845300682089,
+					"jitterFiltered": 36.002085372366984,
+					"error": 30.449183869213694,
+					"errorX": -1.084300884943815,
+					"errorZ": -30.4298716706478
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 145.58757385555495,
+					"jitterFiltered": 144.55725637039183,
+					"error": 164.8935806531331,
+					"errorX": 154.75618260012692,
+					"errorZ": -56.92465974994923
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 101.09090042536158,
+					"jitterFiltered": 101.89247952484007,
+					"error": 101.6914113089037,
+					"errorX": -37.41119480811395,
+					"errorZ": -94.55974638833362
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 7.201989578065815,
+					"jitterFiltered": 3.7453058528433596,
+					"error": 46.6758781142014,
+					"errorX": -13.686202426690445,
+					"errorZ": -44.624269863690074
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 5.999804626282536,
+					"jitterFiltered": 4.620216990912161,
+					"error": 97.21591189484278,
+					"errorX": -3.049796810966931,
+					"errorZ": -97.168061959461
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 13.317612586766458,
+					"jitterFiltered": 11.47563950799291,
+					"error": 88.24396068651743,
+					"errorX": 5.2511165039031305,
+					"errorZ": -88.08758353539997
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 36.43638993376471,
+					"jitterFiltered": 32.70228067524883,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 18.46940928457454,
+					"jitterFiltered": 17.22429133826766,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 100.99424105241884,
+					"jitterFiltered": 98.09227801574526,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.493907680514763,
+					"jitterFiltered": 7.773861586948811,
+					"error": 52.45863735963874,
+					"errorX": 19.062805785003665,
+					"errorZ": -48.872467394570094
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 9.501952120157139,
+					"jitterFiltered": 9.501952120157139,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 43.45295651182858,
+					"jitterFiltered": 39.17490891016271,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 42.16600078680708,
+			"staticJitterFiltered": 39.49137305424955,
+			"accuracyMm": 102.61919549277025,
+			"expressionDriftMm": 11.47563950799291,
+			"rotationCouplingMm": 24.963286006758246,
+			"filterLagMs": 10
+		},
+		{
+			"combo": "canthiMid/faceWidth",
+			"calibration": {
+				"f": 536.422119140625,
+				"principal": {
+					"x": 642.9876556396484,
+					"y": 299.9378967285156
+				},
+				"realSize": 175.00241615797754
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 42.61448528028966,
+					"jitterFiltered": 40.24456794103161,
+					"error": 4.470991137776516,
+					"errorX": 4.435945920698506,
+					"errorZ": 0.5586998681890236
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 33.171390772047076,
+					"jitterFiltered": 30.084296120587474,
+					"error": 34.246620658075415,
+					"errorX": -2.7071005335479867,
+					"errorZ": -34.13945859558089
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 142.9143250609746,
+					"jitterFiltered": 141.72872772937296,
+					"error": 165.5677160703843,
+					"errorX": 154.01997912661994,
+					"errorZ": -60.74960604480452
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 95.84129929000927,
+					"jitterFiltered": 96.4363008386949,
+					"error": 92.63294794642836,
+					"errorX": -37.15460324486259,
+					"errorZ": -84.85516191112094
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 6.066972342258371,
+					"jitterFiltered": 2.4764553326531384,
+					"error": 50.25062417129133,
+					"errorX": -13.60899424064101,
+					"errorZ": -48.37272480812476
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 4.874742319403815,
+					"jitterFiltered": 2.52141973327786,
+					"error": 91.86154045522578,
+					"errorX": -3.083106153827382,
+					"errorZ": -91.80978744802383
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 8.881255822969113,
+					"jitterFiltered": 7.128574183580847,
+					"error": 85.3302746393394,
+					"errorX": 5.266131676902745,
+					"errorZ": -85.16762076744078
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 36.860295991416805,
+					"jitterFiltered": 32.88932657539097,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 18.941637323494795,
+					"jitterFiltered": 17.59158185898983,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 100.52455776101876,
+					"jitterFiltered": 97.54628241163122,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.158134256879434,
+					"jitterFiltered": 7.226095402952272,
+					"error": 55.435222672791845,
+					"errorX": 18.950578334133496,
+					"errorZ": -52.095484387650004
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 5.453721354693858,
+					"jitterFiltered": 5.453721354693858,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 40.140353441516126,
+					"jitterFiltered": 35.658727962443706,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 37.892938026168366,
+			"staticJitterFiltered": 35.16443203080954,
+			"accuracyMm": 100.07820716083245,
+			"expressionDriftMm": 7.128574183580847,
+			"rotationCouplingMm": 25.240454217190397,
+			"filterLagMs": 15
+		},
+		{
+			"combo": "eyeMid/ipd",
+			"calibration": {
+				"f": 536.8633829752603,
+				"principal": {
+					"x": 643.0187225341797,
+					"y": 299.0605824788411
+				},
+				"realSize": 78.06105981776426
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 44.347587337056076,
+					"jitterFiltered": 42.06098123865413,
+					"error": 5.257320009099548,
+					"errorX": 4.45362581762644,
+					"errorZ": 2.7936769238137913
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 40.03079168176144,
+					"jitterFiltered": 37.024425794587174,
+					"error": 29.770738505765397,
+					"errorX": -0.7898786930456652,
+					"errorZ": -29.760258110925975
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 145.87092481441246,
+					"jitterFiltered": 144.85607578112018,
+					"error": 165.53724538821433,
+					"errorX": 155.05630290885426,
+					"errorZ": -57.966563974031715
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 100.32349491784788,
+					"jitterFiltered": 101.21461833570235,
+					"error": 102.33870720406333,
+					"errorX": -37.13126539783908,
+					"errorZ": -95.36498373173583
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 7.478759412916696,
+					"jitterFiltered": 3.7901884305939455,
+					"error": 46.617610870473364,
+					"errorX": -13.712299925049228,
+					"errorZ": -44.555296812347365
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 5.910036056054474,
+					"jitterFiltered": 4.556290152693698,
+					"error": 97.0247054733655,
+					"errorX": -2.9262749074092858,
+					"errorZ": -96.98056706041467
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 13.597148269001497,
+					"jitterFiltered": 11.5852325191663,
+					"error": 88.23335328996708,
+					"errorX": 5.489281280047986,
+					"errorZ": -88.06243480520317
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 37.010690311981975,
+					"jitterFiltered": 33.26907231198221,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 18.302407465008113,
+					"jitterFiltered": 17.079963062815175,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 100.9498669160481,
+					"jitterFiltered": 98.07369498792035,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.51373949847034,
+					"jitterFiltered": 7.772252019923983,
+					"error": 56.292064457682606,
+					"errorX": 19.070373601307484,
+					"errorZ": -52.963358764474606
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 11.659579694615427,
+					"jitterFiltered": 11.659579694615427,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 43.770107736947864,
+					"jitterFiltered": 39.55210215223801,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 42.18918950940876,
+			"staticJitterFiltered": 39.54270351662065,
+			"accuracyMm": 102.87956723402912,
+			"expressionDriftMm": 11.5852325191663,
+			"rotationCouplingMm": 25.17451768739869,
+			"filterLagMs": 10
+		},
+		{
+			"combo": "eyeMid/outerCanthi",
+			"calibration": {
+				"f": 536.8633829752603,
+				"principal": {
+					"x": 643.0187225341797,
+					"y": 299.0605824788411
+				},
+				"realSize": 109.36680940852126
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 45.237811603223,
+					"jitterFiltered": 42.91239262611401,
+					"error": 5.296891016068654,
+					"errorX": 4.451433510263692,
+					"errorZ": 2.870852510981763
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 38.944774996281595,
+					"jitterFiltered": 35.95286634092338,
+					"error": 30.447889187106615,
+					"errorX": -1.0473137343844314,
+					"errorZ": -30.4298716706478
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 145.5574245514404,
+					"jitterFiltered": 144.52914206876454,
+					"error": 164.7771408431814,
+					"errorX": 154.6321093977772,
+					"errorZ": -56.92465974994923
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 101.10192370042594,
+					"jitterFiltered": 101.90909631548837,
+					"error": 101.6430601031533,
+					"errorX": -37.2795658519149,
+					"errorZ": -94.55974638833362
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 7.206759905826781,
+					"jitterFiltered": 3.750961626106604,
+					"error": 46.68286741086572,
+					"errorX": -13.71002001577788,
+					"errorZ": -44.624269863690074
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 6.002887200878396,
+					"jitterFiltered": 4.623960637117308,
+					"error": 97.21208797139188,
+					"errorX": -2.9253688314433104,
+					"errorZ": -97.168061959461
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 13.32924462143661,
+					"jitterFiltered": 11.483184625866855,
+					"error": 88.25832231383264,
+					"errorX": 5.487174550376481,
+					"errorZ": -88.08758353539997
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 36.653293319792354,
+					"jitterFiltered": 32.92594551764732,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 18.37142155613431,
+					"jitterFiltered": 17.122239507711825,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 101.26678721949396,
+					"jitterFiltered": 98.36744734540426,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.478780968887703,
+					"jitterFiltered": 7.756550608881124,
+					"error": 52.512862799484964,
+					"errorX": 19.211524930734026,
+					"errorZ": -48.872467394570094
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 9.559558382412964,
+					"jitterFiltered": 9.559558382412964,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 43.4217142224871,
+					"jitterFiltered": 39.150928231996105,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 42.091293299752294,
+			"staticJitterFiltered": 39.432629483518696,
+			"accuracyMm": 102.57878908214808,
+			"expressionDriftMm": 11.483184625866855,
+			"rotationCouplingMm": 25.024092512679573,
+			"filterLagMs": 10
+		},
+		{
+			"combo": "eyeMid/faceWidth",
+			"calibration": {
+				"f": 536.8633829752603,
+				"principal": {
+					"x": 643.0187225341797,
+					"y": 299.0605824788411
+				},
+				"realSize": 174.85857651520595
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 42.52075526443177,
+					"jitterFiltered": 40.17654626349717,
+					"error": 4.481707420397153,
+					"errorX": 4.446746660124508,
+					"errorZ": 0.5586998681890236
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 33.11894955557164,
+					"jitterFiltered": 30.03551783663362,
+					"error": 34.24375559787057,
+					"errorX": -2.6706112123088985,
+					"errorZ": -34.13945859558089
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 142.88608440517405,
+					"jitterFiltered": 141.7033283973734,
+					"error": 165.45489869492798,
+					"errorX": 153.89869677014792,
+					"errorZ": -60.74960604480452
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 95.85917293245147,
+					"jitterFiltered": 96.45918514499385,
+					"error": 92.57643906297565,
+					"errorX": -37.013491683686006,
+					"errorZ": -84.85516191112094
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 6.073389518260856,
+					"jitterFiltered": 2.486757271363553,
+					"error": 50.25710081360127,
+					"errorX": -13.632889525919035,
+					"errorZ": -48.37272480812476
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 4.879976782913926,
+					"jitterFiltered": 2.5297784843303566,
+					"error": 91.85741294115836,
+					"errorX": -2.957573497171767,
+					"errorZ": -91.80978744802383
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 8.899768127218785,
+					"jitterFiltered": 7.1430252818295665,
+					"error": 85.34526066216654,
+					"errorX": 5.503625196771815,
+					"errorZ": -85.16762076744078
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 37.077627727591754,
+					"jitterFiltered": 33.11461123724144,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 18.844047657412148,
+					"jitterFiltered": 17.489227242462718,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 100.79812781709558,
+					"jitterFiltered": 97.8235070064019,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.142568353784146,
+					"jitterFiltered": 7.207392568956128,
+					"error": 55.48595903804351,
+					"errorX": 19.098485719751636,
+					"errorZ": -52.095484387650004
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 5.49707456864219,
+					"jitterFiltered": 5.49707456864219,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 40.11131046475905,
+					"jitterFiltered": 35.63780126355101,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 37.8198524100017,
+			"staticJitterFiltered": 35.106032050065394,
+			"accuracyMm": 100.03646287816582,
+			"expressionDriftMm": 7.1430252818295665,
+			"rotationCouplingMm": 25.30191923985208,
+			"filterLagMs": 15
+		},
+		{
+			"combo": "rigidMean/ipd",
+			"calibration": {
+				"f": 536.7975830078126,
+				"principal": {
+					"x": 642.3353820800781,
+					"y": 307.47812805175784
+				},
+				"realSize": 78.07062844355085
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 44.22683411210029,
+					"jitterFiltered": 41.862722775096714,
+					"error": 5.386224093077023,
+					"errorX": 4.605081891366723,
+					"errorZ": 2.7936769238137913
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 40.30351556830675,
+					"jitterFiltered": 37.27456094635302,
+					"error": 29.77321958486153,
+					"errorX": -0.8784313402007626,
+					"errorZ": -29.760258110925975
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 146.14015782205564,
+					"jitterFiltered": 145.14486725397538,
+					"error": 165.39960151954918,
+					"errorX": 154.90934653490132,
+					"errorZ": -57.966563974031715
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 100.5324561680504,
+					"jitterFiltered": 101.42051607109414,
+					"error": 102.63629994236628,
+					"errorX": -37.94377345105697,
+					"errorZ": -95.36498373173583
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 7.47292715045585,
+					"jitterFiltered": 3.7836265068974857,
+					"error": 46.52267033686396,
+					"errorX": -13.385977037039547,
+					"errorZ": -44.555296812347365
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 5.907302543214633,
+					"jitterFiltered": 4.547055643754594,
+					"error": 97.03373979646176,
+					"errorX": -3.211895317077068,
+					"errorZ": -96.98056706041467
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 13.56242633116104,
+					"jitterFiltered": 11.570399564456183,
+					"error": 88.1877017080624,
+					"errorX": 4.698756083213558,
+					"errorZ": -88.06243480520317
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 36.919342740681,
+					"jitterFiltered": 33.23131489278791,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 19.31440818379735,
+					"jitterFiltered": 18.1324872642574,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 99.4944552617156,
+					"jitterFiltered": 96.63801865439528,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.490455904648158,
+					"jitterFiltered": 7.771524458753562,
+					"error": 56.154442037787504,
+					"errorX": 18.66022478323311,
+					"errorZ": -52.963358764474606
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 11.582120710561451,
+					"jitterFiltered": 11.582120710561451,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 43.65815576218692,
+					"jitterFiltered": 39.462647284338054,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 42.26517484020352,
+			"staticJitterFiltered": 39.56864186072487,
+			"accuracyMm": 102.89807789881029,
+			"expressionDriftMm": 11.570399564456183,
+			"rotationCouplingMm": 25.681901078522653,
+			"filterLagMs": 10
+		},
+		{
+			"combo": "rigidMean/outerCanthi",
+			"calibration": {
+				"f": 536.7975830078126,
+				"principal": {
+					"x": 642.3353820800781,
+					"y": 307.47812805175784
+				},
+				"realSize": 109.38021545341927
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 45.11305622230581,
+					"jitterFiltered": 42.71000773653528,
+					"error": 5.424801419582065,
+					"errorX": 4.6028986847517395,
+					"errorZ": 2.870852510981763
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 39.21616320747008,
+					"jitterFiltered": 36.20137902295679,
+					"error": 30.451061680946875,
+					"errorX": -1.1358114300962825,
+					"errorZ": -30.4298716706478
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 145.82541785400997,
+					"jitterFiltered": 144.81544399447515,
+					"error": 164.63884250896083,
+					"errorX": 154.48472926164231,
+					"errorZ": -56.92465974994923
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 101.31252313543426,
+					"jitterFiltered": 102.11661330938418,
+					"error": 101.9442869440095,
+					"errorX": -38.093201539074826,
+					"errorZ": -94.55974638833362
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 7.201438719574875,
+					"jitterFiltered": 3.7456119837415613,
+					"error": 46.58810322917335,
+					"errorX": -13.383792497818906,
+					"errorZ": -44.624269863690074
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 5.9997644837530535,
+					"jitterFiltered": 4.614779195862985,
+					"error": 97.22109915890164,
+					"errorX": -3.2108965581798006,
+					"errorZ": -97.168061959461
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 13.293892974507667,
+					"jitterFiltered": 11.468620800297266,
+					"error": 88.2127040769365,
+					"errorX": 4.696678343159294,
+					"errorZ": -88.08758353539997
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 36.560276556969725,
+					"jitterFiltered": 32.887055172386404,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 19.38779729028874,
+					"jitterFiltered": 18.180733676138747,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 99.80696567694731,
+					"jitterFiltered": 96.92650726325714,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.455681931354505,
+					"jitterFiltered": 7.75601479072065,
+					"error": 52.3631190737548,
+					"errorX": 18.798355510493653,
+					"errorZ": -48.872467394570094
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 9.487094657129946,
+					"jitterFiltered": 9.487094657129946,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 43.30892100352789,
+					"jitterFiltered": 39.060565696859314,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 42.164609714887945,
+			"staticJitterFiltered": 39.45569337974604,
+			"accuracyMm": 102.59808296026134,
+			"expressionDriftMm": 11.468620800297266,
+			"rotationCouplingMm": 25.533894424262577,
+			"filterLagMs": 10
+		},
+		{
+			"combo": "rigidMean/faceWidth",
+			"calibration": {
+				"f": 536.7975830078126,
+				"principal": {
+					"x": 642.3353820800781,
+					"y": 307.47812805175784
+				},
+				"realSize": 174.8800104579189
+			},
+			"steps": [
+				{
+					"stepId": "calibCentre",
+					"frames": 134,
+					"detectionRate": 1,
+					"jitterRaw": 42.41047482011758,
+					"jitterFiltered": 39.993095920208205,
+					"error": 4.631668111764104,
+					"errorX": 4.5978477524618,
+					"errorZ": 0.5586998681890236
+				},
+				{
+					"stepId": "calibLateral",
+					"frames": 141,
+					"detectionRate": 1,
+					"jitterRaw": 33.356203521439134,
+					"jitterFiltered": 30.253200213486522,
+					"error": 34.25071815442306,
+					"errorX": -2.7584526268078946,
+					"errorZ": -34.13945859558089
+				},
+				{
+					"stepId": "staticL",
+					"frames": 136,
+					"detectionRate": 0.8088235294117647,
+					"jitterRaw": 143.14943311064803,
+					"jitterFiltered": 141.97755699859115,
+					"error": 165.31771193028513,
+					"errorX": 153.75119916041564,
+					"errorZ": -60.74960604480452
+				},
+				{
+					"stepId": "staticNear",
+					"frames": 139,
+					"detectionRate": 0.7122302158273381,
+					"jitterRaw": 96.06213992896234,
+					"jitterFiltered": 96.65813585564423,
+					"error": 92.9158180492779,
+					"errorX": -37.854335825688004,
+					"errorZ": -84.85516191112094
+				},
+				{
+					"stepId": "staticFar",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 6.064142933918509,
+					"jitterFiltered": 2.4719452022960007,
+					"error": 50.169809469663676,
+					"errorX": -13.307489502524,
+					"errorZ": -48.37272480812476
+				},
+				{
+					"stepId": "staticC",
+					"frames": 128,
+					"detectionRate": 1,
+					"jitterRaw": 4.870073405924799,
+					"jitterFiltered": 2.5055936184937035,
+					"error": 91.86713307137926,
+					"errorX": -3.245468764784435,
+					"errorZ": -91.80978744802383
+				},
+				{
+					"stepId": "expression",
+					"frames": 210,
+					"detectionRate": 1,
+					"jitterRaw": 8.835764386914652,
+					"jitterFiltered": 7.108036292306762,
+					"error": 85.29771680035057,
+					"errorX": 4.709231802130441,
+					"errorZ": -85.16762076744078
+				},
+				{
+					"stepId": "yaw",
+					"frames": 207,
+					"detectionRate": 0.9565217391304348,
+					"jitterRaw": 36.99692187743771,
+					"jitterFiltered": 33.084053306602975,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "pitch",
+					"frames": 220,
+					"detectionRate": 0.9772727272727273,
+					"jitterRaw": 19.872227150054357,
+					"jitterFiltered": 18.565875212166553,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "motion",
+					"frames": 274,
+					"detectionRate": 0.9452554744525548,
+					"jitterRaw": 99.36071512827729,
+					"jitterFiltered": 96.39373586420298,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "occlusion",
+					"frames": 136,
+					"detectionRate": 1,
+					"jitterRaw": 8.119427366091418,
+					"jitterFiltered": 7.207403816083953,
+					"error": 55.34586974505181,
+					"errorX": 18.687584227297968,
+					"errorZ": -52.095484387650004
+				},
+				{
+					"stepId": "absent",
+					"frames": 88,
+					"detectionRate": 0.022727272727272728,
+					"jitterRaw": 5.4385081472570125,
+					"jitterFiltered": 5.4385081472570125,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				},
+				{
+					"stepId": "return",
+					"frames": 106,
+					"detectionRate": 1,
+					"jitterRaw": 39.9994953599313,
+					"jitterFiltered": 35.54842555897564,
+					"error": null,
+					"errorX": null,
+					"errorZ": null
+				}
+			],
+			"staticJitterRaw": 37.883339170778356,
+			"staticJitterFiltered": 35.123148066847364,
+			"accuracyMm": 100.0676181301515,
+			"expressionDriftMm": 7.108036292306762,
+			"rotationCouplingMm": 25.824964259384764,
+			"filterLagMs": 15
+		}
+	],
+	"filter": {
+		"minCutoff": 1,
+		"beta": 0.01,
+		"dCutoff": 1
+	}
+}

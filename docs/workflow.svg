@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 900" width="960" height="900" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+	<defs>
+		<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+			<path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+		</marker>
+		<marker id="arrow-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+			<path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+		</marker>
+		<style>
+			.box { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; }
+			.planned { fill: #ffffff; stroke: #94a3b8; stroke-width: 1.5; stroke-dasharray: 6 4; }
+			.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; }
+			.title { font-size: 15px; font-weight: 600; fill: #0f172a; }
+			.side-title { font-size: 14px; font-weight: 600; fill: #0f172a; }
+			.detail { font-size: 12.5px; fill: #475569; }
+			.file { font-size: 11.5px; fill: #64748b; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; }
+			.flow { stroke: #334155; stroke-width: 1.6; fill: none; }
+			.hint { stroke: #94a3b8; stroke-width: 1.4; fill: none; stroke-dasharray: 2 4; }
+			.label { font-size: 11.5px; fill: #64748b; }
+		</style>
+	</defs>
+
+	<rect width="960" height="900" fill="#ffffff"/>
+	<text x="90" y="30" font-size="18" font-weight="700" fill="#0f172a">Parallax Tracker: per-frame pipeline</text>
+
+	<!-- Main chain: x 90..620 -->
+	<g>
+		<rect class="box" x="90" y="50" width="530" height="88" rx="8"/>
+		<text class="tag" x="106" y="70" fill="#2563eb">INPUT</text>
+		<text class="title" x="106" y="90">Webcam frames</text>
+		<text class="detail" x="106" y="108">getUserMedia, 1280×720 at 30 fps; processed once per new video frame</text>
+		<text class="file" x="106" y="126">src/lib/bench/live.ts · requestVideoFrameCallback</text>
+	</g>
+	<g>
+		<rect class="box" x="90" y="162" width="530" height="88" rx="8"/>
+		<text class="tag" x="106" y="182" fill="#7c3aed">INTELLIGENT ALGORITHM</text>
+		<text class="title" x="106" y="202">MediaPipe Face Landmarker (neural network)</text>
+		<text class="detail" x="106" y="220">478 face landmarks + 4×4 head-pose matrix, ~8.5 ms per frame (laptop)</text>
+		<text class="file" x="106" y="238">src/lib/bench/trackers/mediapipe.ts</text>
+	</g>
+	<g>
+		<rect class="box" x="90" y="274" width="530" height="88" rx="8"/>
+		<text class="tag" x="106" y="294" fill="#0d9488">PROCESSING</text>
+		<text class="title" x="106" y="314">Estimator: head pose → image-plane centre + size</text>
+		<text class="detail" x="106" y="332">centre = (x / −z, y / z), size = 1 / −z from the matrix translation</text>
+		<text class="file" x="106" y="350">src/lib/bench/estimators.ts</text>
+	</g>
+	<g>
+		<rect class="box" x="90" y="386" width="530" height="88" rx="8"/>
+		<text class="tag" x="106" y="406" fill="#0d9488">PROCESSING</text>
+		<text class="title" x="106" y="426">Two-point calibration → millimetres</text>
+		<text class="detail" x="106" y="444">focal length, principal point and user scale from marks C and R</text>
+		<text class="file" x="106" y="462">src/lib/bench/geometry.ts · calibrate(), toMm()</text>
+	</g>
+	<g>
+		<rect class="box" x="90" y="498" width="530" height="88" rx="8"/>
+		<text class="tag" x="106" y="518" fill="#0d9488">PROCESSING</text>
+		<text class="title" x="106" y="538">One Euro filter on x, y, z → head position (mm)</text>
+		<text class="detail" x="106" y="556">smooths hard at rest, little lag when moving; resets after face loss</text>
+		<text class="file" x="106" y="574">src/lib/bench/oneEuro.ts</text>
+	</g>
+	<g>
+		<rect class="box" x="90" y="610" width="530" height="88" rx="8"/>
+		<text class="tag" x="106" y="630" fill="#ea580c">OUTPUT</text>
+		<text class="title" x="106" y="650">Head-coupled off-axis projection (Three.js)</text>
+		<text class="detail" x="106" y="668">virtual camera at the eye, frustum through the real screen edges</text>
+		<text class="file" x="106" y="686">src/lib/bench/parallax.ts · ParallaxScene.render()</text>
+	</g>
+	<g>
+		<rect class="box" x="90" y="722" width="530" height="88" rx="8"/>
+		<text class="tag" x="106" y="742" fill="#db2777">INTERACTION</text>
+		<text class="title" x="106" y="762">Viewer moves their head → scene shifts like a window</text>
+		<text class="detail" x="106" y="780">motion parallax gives depth without stereo glasses</text>
+		<text class="file" x="106" y="798">src/routes/bench/live/+page.svelte</text>
+	</g>
+
+	<!-- Chain arrows -->
+	<path class="flow" d="M355,138 V160" marker-end="url(#arrow)"/>
+	<path class="flow" d="M355,250 V272" marker-end="url(#arrow)"/>
+	<path class="flow" d="M355,362 V384" marker-end="url(#arrow)"/>
+	<path class="flow" d="M355,474 V496" marker-end="url(#arrow)"/>
+	<path class="flow" d="M355,586 V608" marker-end="url(#arrow)"/>
+	<path class="flow" d="M355,698 V720" marker-end="url(#arrow)"/>
+
+	<!-- Feedback loop -->
+	<path class="flow" d="M90,766 H50 V94 H88" marker-end="url(#arrow)"/>
+	<text class="label" transform="translate(42,430) rotate(-90)" text-anchor="middle">next frame (~30 per second)</text>
+
+	<!-- LiveTracker bracket over stages 1-5 -->
+	<path d="M632,56 H640 V580 H632" fill="none" stroke="#cbd5e1" stroke-width="1.5"/>
+	<text class="label" transform="translate(652,515) rotate(90)" text-anchor="middle">LiveTracker (live.ts)</text>
+
+	<!-- Side column: x 670..930 -->
+	<g>
+		<rect class="planned" x="670" y="162" width="260" height="88" rx="8"/>
+		<text class="tag" x="686" y="182" fill="#64748b">PLANNED (IF NEEDED)</text>
+		<text class="side-title" x="686" y="202">Low-light preprocessing</text>
+		<text class="detail" x="686" y="220">contrast equalisation, only if</text>
+		<text class="detail" x="686" y="236">the dim-light test fails</text>
+	</g>
+	<path class="hint" d="M670,206 H622" marker-end="url(#arrow-muted)"/>
+
+	<g>
+		<rect class="box" x="670" y="274" width="260" height="88" rx="8"/>
+		<text class="tag" x="686" y="294" fill="#64748b">OFFLINE · /bench</text>
+		<text class="side-title" x="686" y="314">Benchmark harness</text>
+		<text class="detail" x="686" y="332">OpenCV vs MediaPipe on the same</text>
+		<text class="detail" x="686" y="348">frames; picked tracker + estimator</text>
+	</g>
+	<path class="hint" d="M670,318 H622" marker-end="url(#arrow-muted)"/>
+
+	<g>
+		<rect class="box" x="670" y="386" width="260" height="88" rx="8"/>
+		<text class="tag" x="686" y="406" fill="#2563eb">INPUT · ONCE</text>
+		<text class="side-title" x="686" y="426">User setup (saved locally)</text>
+		<text class="detail" x="686" y="444">screen size, camera offset,</text>
+		<text class="detail" x="686" y="460">desk marks C and R (mm)</text>
+	</g>
+	<path class="flow" d="M670,430 H622" marker-end="url(#arrow)"/>
+	<path class="flow" d="M800,474 V598 H655 V654 H622" marker-end="url(#arrow)"/>
+	<text class="label" x="806" y="540">screen geometry</text>
+
+	<g>
+		<rect class="planned" x="670" y="610" width="260" height="88" rx="8"/>
+		<text class="tag" x="686" y="630" fill="#64748b">PLANNED</text>
+		<text class="side-title" x="686" y="650">Modelled 3D scenes (.glb)</text>
+		<text class="detail" x="686" y="668">Gallery / Windmill, from the</text>
+		<text class="detail" x="686" y="684">threejs_perspective branch</text>
+	</g>
+	<path class="hint" d="M670,676 H622" marker-end="url(#arrow-muted)"/>
+
+	<g>
+		<rect class="planned" x="670" y="722" width="260" height="88" rx="8"/>
+		<text class="tag" x="686" y="742" fill="#64748b">PLANNED</text>
+		<text class="side-title" x="686" y="762">Standalone app page</text>
+		<text class="detail" x="686" y="780">own route, fullscreen, guided</text>
+		<text class="detail" x="686" y="796">calibration, screen size helper</text>
+	</g>
+	<path class="hint" d="M670,766 H622" marker-end="url(#arrow-muted)"/>
+
+	<!-- Legend -->
+	<g transform="translate(90,848)">
+		<rect class="box" x="0" y="0" width="28" height="18" rx="4"/>
+		<text class="label" x="36" y="13">implemented on main</text>
+		<rect class="planned" x="190" y="0" width="28" height="18" rx="4"/>
+		<text class="label" x="226" y="13">planned</text>
+		<path class="flow" d="M320,9 H360" marker-end="url(#arrow)"/>
+		<text class="label" x="368" y="13">data flow</text>
+		<path class="hint" d="M460,9 H500" marker-end="url(#arrow-muted)"/>
+		<text class="label" x="508" y="13">informs / will plug in</text>
+	</g>
+</svg>
