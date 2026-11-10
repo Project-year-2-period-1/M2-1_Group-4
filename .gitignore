@@ -36,7 +36,6 @@ vite.config.ts.timestamp-*
 !facialID-test/results/*.json
 /facialID-test/.opencv-build
 /static/opencv
-/static/mediapipe
 /static/bench-fixtures
 /facialID-test/test-results
 /facialID-test/playwright-report

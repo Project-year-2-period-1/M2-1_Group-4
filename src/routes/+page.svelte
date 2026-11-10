@@ -6,6 +6,7 @@
 	import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js';
 	import { HeadTracker, type HeadTrackerStatus } from '$lib/tracking/headTracker';
 
+	// TODO: remove this eventually (or combine it with other mouse related stuff just for testing, to keep it organized)
 	interface MousePos {
 		x: number,
 		y: number,
@@ -20,6 +21,7 @@
 	let head: HeadTracker | null = null;
 	let headStatus: HeadTrackerStatus = $state({ state: 'loading' });
 
+	// TODO: change this to have the "window" be at a set virtual position, and relate real-world distances to virtual units
 	// camera distance (world units) the scene is composed for. The viewer's measured starting
 	// distance is mapped onto this, so the scene looks as designed from wherever they sit.
 	const BASE_CAMERA_Z = 4;
@@ -42,7 +44,6 @@
 		mouse_pos = {x: event.x - rect.left, y: event.y - rect.top};
 	}
 
-	// TODO: add fps counter for testing and comparing
 	onMount(() => {
 		// return early if canvas doesn't exist (not actually necessary, just to make TypeScript happy)
 		if (!canvas) {
