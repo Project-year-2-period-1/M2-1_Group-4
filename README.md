@@ -1,7 +1,7 @@
 # M2-1_Group-4: Parallax Tracker
 
-Webcam head tracking drives a head-coupled 3D view, so the screen acts as a window and the scene
-appears to have depth through motion parallax, without stereo glasses.
+The root page shows the webcam and estimates eye-to-camera distance in centimetres from MediaPipe
+iris landmarks. The `/bench/live` route retains the head-coupled 3D parallax prototype.
 
 **How it works:** see [`docs/WORKFLOW.md`](docs/WORKFLOW.md) for the pipeline diagram and a
 description of each stage.
@@ -16,9 +16,11 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:5173/bench/live> (`npm run dev -- --open` opens the browser for you).
+Open <http://localhost:5173/> for the iris distance estimate. It assumes an 11.7 mm iris diameter
+and a 63-degree horizontal camera field of view, so the result is an estimate. Open
+<http://localhost:5173/bench/live> for the parallax prototype.
 
-### Using it
+### Parallax prototype
 
 1. **Measure once** (millimetres, saved in the browser) and fill in "Screen & marks":
    - the visible screen width and height
@@ -55,6 +57,8 @@ npm run lint     # formatting check (npm run format to fix)
 | Calibration → mm                          | `src/lib/bench/geometry.ts`                   |
 | Smoothing                                 | `src/lib/bench/oneEuro.ts`                    |
 | 3D rendering                              | `src/lib/bench/parallax.ts` (`ParallaxScene`) |
+| Iris-based Z-distance calculation         | `src/lib/tracking/irisDistanceCalculator.ts`  |
+| Camera + MediaPipe loop                   | `src/lib/tracking/irisDistanceCamera.ts`      |
 | Page                                      | `src/routes/bench/live/+page.svelte`          |
 
 The code sits under `bench/` because it was built alongside the tracker benchmark. MediaPipe vs
