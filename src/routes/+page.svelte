@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte'
 	import Stats from 'stats.js';
-	import * as THREE from 'three'
+	import * as THREE from 'three/webgpu'
 	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 	import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js';
 	import { HeadTracker, type HeadTrackerStatus } from '$lib/tracking/headTracker';
@@ -13,7 +13,7 @@
 	};
 
 	let canvas: HTMLCanvasElement | null;
-	let renderer: THREE.WebGLRenderer | null;
+	let renderer: THREE.WebGPURenderer | null;
 	let animId: number | null;
 
 	// webcam head tracking (MediaPipe). Falls back to the mouse if the camera can't be used.
@@ -44,7 +44,8 @@
 		mouse_pos = {x: event.x - rect.left, y: event.y - rect.top};
 	}
 
-	onMount(() => {
+	// TODO: add fps counter for testing and comparing
+	onMount(async () => {
 		// return early if canvas doesn't exist (not actually necessary, just to make TypeScript happy)
 		if (!canvas) {
 			return;
@@ -63,8 +64,10 @@
 		// initializing scene and camera
 		const scene = new THREE.Scene()
 		const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000)
-		renderer = new THREE.WebGLRenderer({ canvas })
+		renderer = new THREE.WebGPURenderer({ canvas })
 		renderer.setSize(canvas.clientWidth, canvas.clientHeight)  // TODO: update size when fullscreened, or require fullscreen from the start, or something
+
+		await renderer.init();
 
 		// loading scene
 		{
@@ -77,7 +80,7 @@
 					const model = gltf.scene;
 
 					model.rotation.y = -Math.PI / 2;  // fix model rotation
-					model.position.set(0, -1, 1)      // fix model position
+					model.position.set(0, -1, -1)      // fix model position
 
 					scene.add(model);
 				},
@@ -92,32 +95,22 @@
 			)
 		}
 
+		// scene background (sky and such)
+		{
+			scene.background = new THREE.Color(0xb0cdff);
+		}
+
+		// TODO: fix scene lighting (maybe add lighting into scene file rather than setting it in ThreeJS)
 		// directional light
 		{
 			const color = 0xFFFFFF;
-			const intensity = 1;
-			const light = new THREE.DirectionalLight(color, intensity);
-			light.position.set(2, 10, 2);
-			light.target.position.set(-5, 0, -2);
+			const intensity = 10;
+			// const light = new THREE.DirectionalLight(color, intensity);
+			const light = new THREE.PointLight(color, intensity)
+			light.position.set(0.5, 1, 0);
+			// light.target.position.set(0, 0, -1);
 			scene.add(light);
-			scene.add(light.target);
-		}
-
-		// back light plane
-		{
-			const intensity = 2;
-			const width = 10;
-			const height = 10;
-
-			const rect_light = new THREE.RectAreaLight(0xffffff, intensity, width, height);
-
-			rect_light.position.set(0, 0, 5);
-			rect_light.lookAt(0, 0, 0);
-
-			scene.add(rect_light)
-
-			const rectLightHelper = new RectAreaLightHelper(rect_light);  // this just makes the light itsself visible as a bright rectangle
-			scene.add(rectLightHelper);
+			// scene.add(light.target);
 		}
 
 		// start head tracking (not awaited: the scene renders with the mouse until it's ready)
@@ -157,7 +150,6 @@
 				return;
 			}
 
-
 			// move camera
 			if (head?.position && head.baselineDistance) {
 				// head position is in mm relative to the screen centre; one uniform scale keeps
@@ -183,19 +175,17 @@
 
 			stats.end()  // stop tracking frame time
 
-			animId = requestAnimationFrame(animate)  // request the next frame
 			renderer.render(scene, camera)  // render the current frame
 		}
 
-		animate()  // start the animation loop
+		// start animation loop
+		renderer.setAnimationLoop(animate);
 	})
 
 	// cleanup
 	onDestroy(() => {
 		// cancel the animation
-		if (animId) {
-			cancelAnimationFrame(animId);
-		}
+		renderer?.setAnimationLoop(null);
 
 		// destroy the renderer
 		renderer?.dispose();
@@ -206,6 +196,7 @@
 </script>
 
 <canvas bind:this={canvas} onmousemove={handleMouseMove} onmousedown={() => {
+	// NOTE: this mousemove code is just for testing (when using mouse rather than camera tracking)
 	if (mode == 'xy') {
 		mode = 'zw';
 	} else if (mode == 'zw') {
