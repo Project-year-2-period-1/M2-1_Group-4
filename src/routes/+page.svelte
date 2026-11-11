@@ -4,7 +4,9 @@
 	import * as THREE from 'three'
 	import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 	import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js';
+	import { HeadTracker, type HeadTrackerStatus } from '$lib/tracking/headTracker';
 
+	// TODO: remove this eventually (or combine it with other mouse related stuff just for testing, to keep it organized)
 	interface MousePos {
 		x: number,
 		y: number,
@@ -13,6 +15,22 @@
 	let canvas: HTMLCanvasElement | null;
 	let renderer: THREE.WebGLRenderer | null;
 	let animId: number | null;
+
+	// webcam head tracking (MediaPipe). Falls back to the mouse if the camera can't be used.
+	let video: HTMLVideoElement;
+	let head: HeadTracker | null = null;
+	let headStatus: HeadTrackerStatus = $state({ state: 'loading' });
+
+	// TODO: change this to have the "window" be at a set virtual position, and relate real-world distances to virtual units
+	// camera distance (world units) the scene is composed for. The viewer's measured starting
+	// distance is mapped onto this, so the scene looks as designed from wherever they sit.
+	const BASE_CAMERA_Z = 4;
+
+	function handleKeyDown(event: KeyboardEvent) {
+		if (event.key === 'c') {
+			head?.recalibrate();
+		}
+	}
 
 	let mouse_pos: MousePos = $state({x: 0, y: 0})
 	let mode: 'xy' | 'zw' = $state('xy');  // TODO: remove `mode` stuff, it's just for testing. use actual user position instead
@@ -26,7 +44,6 @@
 		mouse_pos = {x: event.x - rect.left, y: event.y - rect.top};
 	}
 
-	// TODO: add fps counter for testing and comparing
 	onMount(() => {
 		// return early if canvas doesn't exist (not actually necessary, just to make TypeScript happy)
 		if (!canvas) {
@@ -103,18 +120,19 @@
 			scene.add(rectLightHelper);
 		}
 
-		// TODO: set this using actual user position, rather than hard-coded test value
-		// set base camera position
-		camera.position.z = 4
+		// start head tracking (not awaited: the scene renders with the mouse until it's ready)
+		head = new HeadTracker(video, (s) => (headStatus = s));
+		head.start();
+
+		// base camera position, until the viewer's starting distance has been measured
+		camera.position.z = BASE_CAMERA_Z
 
 		// Applies a projection matrix to the camera to correct for viewing distance and angle
 		// This corrects for:
 		//     - keystoning -> the trapezoidal shape that the screen appears to be when viewed at an angle
 		//     - perspective compression -> the effect where more distant objects approach being isometric
-		function update_perspective(x: number, y: number, z:number) {
-			// TODO: set this stuff based on actual screen size. these are just some hard-coded values for testing purposes
-			let screen_width = 3
-			let screen_height = 2
+		//TODO: hardcoded values only used under one case, still need to be eventually resolved
+		function update_perspective(x: number, y: number, z:number, screen_width = 3, screen_height = 2) {
 
 			camera.rotation.set(0, 0, 0);  // ensure camera is facing forward (this is needed to make the projection matrix work properly)
 
@@ -140,17 +158,28 @@
 			}
 
 
-			// TODO: animate using actual user position, rather than mouse
 			// move camera
-			if (mode == 'xy') {
-				camera.position.x = (mouse_pos.x - canvas.clientWidth / 2) / 200;
-				camera.position.y = -(mouse_pos.y - canvas.clientHeight / 2) / 200;
-			} else if (mode == 'zw') {
-				camera.position.z = 4 + (mouse_pos.x - canvas.clientWidth / 2) / 200;
-			}
+			if (head?.position && head.baselineDistance) {
+				// head position is in mm relative to the screen centre; one uniform scale keeps
+				// sideways and depth movement in proportion, so parallax stays physically consistent
+				const scale = BASE_CAMERA_Z / head.baselineDistance;  // world units per mm
+				camera.position.set(head.position.x * scale, head.position.y * scale, head.position.z * scale);
+				update_perspective(
+					camera.position.x, camera.position.y, camera.position.z,
+					head.screen.width * scale, head.screen.height * scale
+				)
+			} else {
+				// fallback (no camera / still measuring): mouse position
+				if (mode == 'xy') {
+					camera.position.x = (mouse_pos.x - canvas.clientWidth / 2) / 200;
+					camera.position.y = -(mouse_pos.y - canvas.clientHeight / 2) / 200;
+				} else if (mode == 'zw') {
+					camera.position.z = BASE_CAMERA_Z + (mouse_pos.x - canvas.clientWidth / 2) / 200;
+				}
 
-			// correct for viewer perspective
-			update_perspective(camera.position.x, camera.position.y, camera.position.z)
+				// correct for viewer perspective
+				update_perspective(camera.position.x, camera.position.y, camera.position.z)
+			}
 
 			stats.end()  // stop tracking frame time
 
@@ -170,6 +199,9 @@
 
 		// destroy the renderer
 		renderer?.dispose();
+
+		// release the webcam
+		head?.stop();
 	})
 </script>
 
@@ -180,3 +212,21 @@
 		mode = 'xy';
 	}
 }} class="w-full h-screen block"></canvas>
+
+<svelte:window onkeydown={handleKeyDown} />
+
+<!-- small mirrored webcam preview + tracking status -->
+<div class="pointer-events-none fixed right-2 bottom-2 flex flex-col items-end gap-1 text-xs text-white">
+	<video bind:this={video} muted playsinline class="w-40 -scale-x-100 rounded opacity-70"></video>
+	<p class="rounded bg-black/60 px-2 py-1">
+		{#if headStatus.state === 'loading'}
+			Starting webcam…
+		{:else if headStatus.state === 'measuring'}
+			Sit normally and look at the screen: measuring your distance…
+		{:else if headStatus.state === 'tracking'}
+			Start distance {Math.round(headStatus.baselineDistance / 10)} cm · press C to re-measure
+		{:else}
+			Head tracking unavailable ({headStatus.message}), using the mouse
+		{/if}
+	</p>
+</div>
