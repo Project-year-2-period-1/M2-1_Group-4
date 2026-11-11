@@ -74,13 +74,13 @@
 			const loader = new GLTFLoader();
 
 			loader.load(
-				'src/lib/assets/Windmill.glb',  // TODO: i dont know if this path will work in production
+				'src/lib/assets/Gallery.glb',  // TODO: i dont know if this path will work in production
 				(gltf) => {
 					// This callback runs when the model is successfully loaded
 					const model = gltf.scene;
 
 					model.rotation.y = -Math.PI / 2;  // fix model rotation
-					model.position.set(0, -1, -25)      // fix model position
+					model.position.set(0, -1, -1)      // fix model position
 
 					scene.add(model);
 				},
@@ -100,33 +100,18 @@
 			scene.background = new THREE.Color(0xb0cdff);
 		}
 
+		// TODO: fix scene lighting (maybe add lighting into scene file rather than setting it in ThreeJS)
 		// directional light
 		{
 			const color = 0xFFFFFF;
-			const intensity = 1;
-			const light = new THREE.DirectionalLight(color, intensity);
-			light.position.set(2, 10, 2);
-			light.target.position.set(-5, 0, -2);
+			const intensity = 10;
+			// const light = new THREE.DirectionalLight(color, intensity);
+			const light = new THREE.PointLight(color, intensity)
+			light.position.set(0.5, 1, 0);
+			// light.target.position.set(0, 0, -1);
 			scene.add(light);
-			scene.add(light.target);
+			// scene.add(light.target);
 		}
-
-// 		// back light plane
-// 		{
-// 			const intensity = 2;
-// 			const width = 10;
-// 			const height = 10;
-//
-// 			const rect_light = new THREE.RectAreaLight(0xffffff, intensity, width, height);
-//
-// 			rect_light.position.set(0, 0, 5);
-// 			rect_light.lookAt(0, 0, 0);
-//
-// 			scene.add(rect_light)
-//
-// 			const rectLightHelper = new RectAreaLightHelper(rect_light);  // this just makes the light itsself visible as a bright rectangle
-// 			scene.add(rectLightHelper);
-// 		}
 
 		// start head tracking (not awaited: the scene renders with the mouse until it's ready)
 		head = new HeadTracker(video, (s) => (headStatus = s));
@@ -211,6 +196,7 @@
 </script>
 
 <canvas bind:this={canvas} onmousemove={handleMouseMove} onmousedown={() => {
+	// NOTE: this mousemove code is just for testing (when using mouse rather than camera tracking)
 	if (mode == 'xy') {
 		mode = 'zw';
 	} else if (mode == 'zw') {
