@@ -160,16 +160,10 @@
 		const animate = () => {
 			stats.begin()  // start tracking frame time
 
-			console.log("hihi")
-
 			// return early if the renderer or canvas don't exist
 			if (!renderer || !canvas) {
 				return;
 			}
-
-			console.log("hihi 2")
-
-
 
 			// move camera
 			if (head?.position && head.baselineDistance) {
@@ -197,8 +191,6 @@
 			stats.end()  // stop tracking frame time
 
 			renderer.render(scene, camera)  // render the current frame
-
-			console.log("hihi 3")
 		}
 
 		// start animation loop
