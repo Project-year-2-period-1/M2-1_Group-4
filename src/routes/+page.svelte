@@ -6,6 +6,11 @@
 	import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js';
 	import { HeadTracker, type HeadTrackerStatus } from '$lib/tracking/headTracker';
 
+	//for screen size calibration
+  import ScreenCalibration from '$lib/calibration/ScreenCalibration.svelte';
+  import { ppi, loadPpi } from '$lib/calibration/ppi';
+
+
 	// TODO: remove this eventually (or combine it with other mouse related stuff just for testing, to keep it organized)
 	interface MousePos {
 		x: number,
@@ -21,6 +26,9 @@
 	let head: HeadTracker | null = null;
 	let headStatus: HeadTrackerStatus = $state({ state: 'loading' });
 
+	let showCalibration = $state(false);
+  onMount(loadPpi);
+
 	// TODO: change this to have the "window" be at a set virtual position, and relate real-world distances to virtual units
 	// camera distance (world units) the scene is composed for. The viewer's measured starting
 	// distance is mapped onto this, so the scene looks as designed from wherever they sit.
@@ -29,9 +37,24 @@
 	function handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'c') {
 			head?.recalibrate();
+			return;
 		}
-	}
 
+		if (event.key === 'Escape' ||(event.key === 'k' && showCalibration === true)) {
+      showCalibration = false;
+      return;
+    }
+    // ignores key while user is typing
+    const tag = (event.target as HTMLElement).tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+
+    if (event.key === 'k' && !event.ctrlKey && !event.metaKey && !event.altKey) {
+      showCalibration = !showCalibration; 
+    }
+  }
+	
+
+	
 	let mouse_pos: MousePos = $state({x: 0, y: 0})
 	let mode: 'xy' | 'zw' = $state('xy');  // TODO: remove `mode` stuff, it's just for testing. use actual user position instead
 
@@ -149,7 +172,10 @@
 			if (!renderer || !canvas) {
 				return;
 			}
-
+			const currentPpi = $ppi ?? 96;
+			const screenWidthMm = (canvas.clientWidth / currentPpi) * 25.4;
+			
+			const screenHeightMm = (canvas.clientHeight / currentPpi) * 25.4;
 			// move camera
 			if (head?.position && head.baselineDistance) {
 				// head position is in mm relative to the screen centre; one uniform scale keeps
@@ -158,7 +184,7 @@
 				camera.position.set(head.position.x * scale, head.position.y * scale, head.position.z * scale);
 				update_perspective(
 					camera.position.x, camera.position.y, camera.position.z,
-					head.screen.width * scale, head.screen.height * scale
+					screenWidthMm * scale, screenHeightMm * scale
 				)
 			} else {
 				// fallback (no camera / still measuring): mouse position
@@ -221,3 +247,42 @@
 		{/if}
 	</p>
 </div>
+
+{#if showCalibration}
+  <div class="overlay">
+    <div class="panel">
+      <button onclick={() => (showCalibration = false)}>Close (Esc)</button>
+      <ScreenCalibration />
+    </div>
+  </div>
+{/if}
+
+<style>
+  .overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex; justify-content: center; align-items: flex-start;
+    overflow: hidden;
+  }
+  .panel {
+		width: 100%;
+		height:	100%;
+ 		background: #0e0c12;
+  	color: #ffffff;
+  	color-scheme: dark; 
+	}
+
+	.panel :global(input),
+	.panel :global(select) {
+		background-color: #18181b;
+		color: #ffffff;
+		border: 1px solid #3f3f46;
+	}
+
+	.panel :global(option) {
+		background-color: #18181b;
+		color: #ffffff;
+	}
+
+
+</style>
